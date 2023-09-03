@@ -113,7 +113,7 @@ def graph_plot_plotly(_G) -> Figure:
     # Crear la figura
     fig = go.Figure(data=[edge_trace, node_trace],
                     layout=go.Layout(
-                        title='Grafo de Agrupaciones Gaiteras',
+                        title='',#'Grafo de Agrupaciones Gaiteras',
                         titlefont_size=16,
                         showlegend=False,
                         hovermode='closest',
@@ -180,26 +180,29 @@ community_node_color = [community_colors[i] for i,c in enumerate(communities) fo
 # Creación de la página
 ###########################################
 
-st.title('Grafo global la comunidad gaitera :musical_score:')
+def show_main_graph_page():
 
-with st.expander(
-    "Instrucciones", expanded=False
-):
-    st.write("")
-    st.markdown("""
-        * Para expandir el grafo, utilizar el símbolo ubicado en la esquina derecha superior.
-        * Para volver al tamaño original, solo vuelve a presionarlo.
-        * Para alejar y acercar utiliza los botones __+__, y __-__.
-        * Con el botón lupa te permite seleccionar un recuadro de los datos para hacer acercamientos dirigidos.
-""")
-    
+    st.title('Grafo global la comunidad gaitera 	:spider_web:')
+
+    with st.expander(
+        "Instrucciones", expanded=False
+    ):
+        st.write("")
+        st.markdown("""
+            * Para expandir el grafo, utilizar el símbolo ubicado en la esquina derecha superior.
+            * Para volver al tamaño original, solo vuelve a presionarlo.
+            * Para alejar y acercar utiliza los botones __+__, y __-__.
+            * Para moverte dentro del grafo utiliza el botón "cruz de flechas".
+            * Con el botón lupa te permite seleccionar un recuadro de los datos para hacer acercamientos dirigidos.
+    """)
+        
 
 
-# Creamos la figura del grafo
-fig = graph_plot_plotly(G)
+    # Creamos la figura del grafo
+    fig = graph_plot_plotly(G)
 
-# Muestra el grafo en la página
-st.plotly_chart(
-    fig,
-    use_container_width=True
-    )
+    # Muestra el grafo en la página
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+        )

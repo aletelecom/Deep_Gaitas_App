@@ -225,34 +225,34 @@ explicaciones_centralidades = {
 # Creación de la página
 ###########################################
 
-st.title('Medidas de centralidad de la red Gaitera :musical_score:')
+def show_estudio_comunidad():
 
-st.markdown(
-    """
-    # Medidas de centralidad
+    st.title('Medidas de centralidad de la red Gaitera :man-woman-girl-boy:')
 
-    Las medidas de centralidad son una herramienta fundamental en el análisis de grafos y tienen aplicaciones en diferentes ámbitos, desde la investigación social hasta la investigación en tecnología de la información. En esta sección, nos enfocaremos en el uso de las medidas de centralidad en el análisis de grafos de colaboración entre los distintos Gaiteros. A través de la identificación de los nodos centrales en este grafo, podemos tener una comprensión más profunda de la estructura y dinámica de la colaboración en este sector específico. En esta sección, profundizaremos en las medidas de centralidad y cómo se aplican en el contexto de los grafos de colaboración musical.
+    st.markdown(
+        """
+        Las medidas de centralidad son una herramienta fundamental en el análisis de grafos y tienen aplicaciones en diferentes ámbitos, desde la investigación social hasta la investigación en tecnología de la información. En esta sección, nos enfocaremos en el uso de las medidas de centralidad en el análisis de grafos de colaboración entre los distintos Gaiteros. A través de la identificación de los nodos centrales en este grafo, podemos tener una comprensión más profunda de la estructura y dinámica de la colaboración en este sector específico. En esta sección, profundizaremos en las medidas de centralidad y cómo se aplican en el contexto de los grafos de colaboración musical.
 
-    Si quieres ahondar en los conceptos matematicos de cada medida de centralidad, te dejo el enlace wikipedia del tema:
+        Si quieres ahondar en los conceptos matematicos de cada medida de centralidad, te dejo el enlace wikipedia del tema:
 
-    [Medidas de centralidad (Wikipedia)](https://es.wikipedia.org/wiki/Centralidad)
-    """
-)
+        [Medidas de centralidad (Wikipedia)](https://es.wikipedia.org/wiki/Centralidad)
+        """
+    )
 
 
-with st.expander(
-    "Instrucciones", expanded=False
-):
-    st.write("")
-    st.markdown("""
-        * Elije una de las opciones de medida de centralidad, y
-        * Elije una de las distribuciones de la posición de los nodos.
-""")
-    
-centralidad = st.selectbox('Selecciona el tipo de centralidad', centrality_selection)
-layout = st.selectbox('Selecciona la distribución de los nodos', layout_selection)
+    with st.expander(
+        "Instrucciones", expanded=False
+    ):
+        st.write("")
+        st.markdown("""
+            * Elije una de las opciones de medida de centralidad.
+            * Elije una de las distribuciones de la posición de los nodos.
+    """)
+        
+    centralidad = st.selectbox('Selecciona el tipo de centralidad', centrality_selection)
+    layout = st.selectbox('Selecciona la distribución de los nodos', layout_selection)
 
-fig = plot_graph_with_centrality(G, centralidad, layout)
-st.pyplot(fig, use_container_width=True)
+    fig = plot_graph_with_centrality(G, centralidad, layout)
+    st.pyplot(fig, use_container_width=True)
 
-st.markdown(explicaciones_centralidades[centralidad])
+    st.markdown(explicaciones_centralidades[centralidad])
