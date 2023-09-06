@@ -13,6 +13,10 @@ from new_pages.Mundo_chiquito import show_mundo_chiquito
 from new_pages.Datos_crudos import show_datos_crudos
 from new_pages.Caminos_de_la_red import show_caminos
 
+###########################################
+# Creación de la página
+###########################################
+
 st.write("# Bienvenidos a Deep Gaitas! :musical_score:")
 
 st.write('Algunos gráficos pueden tardar un poco en mostrarse.')
