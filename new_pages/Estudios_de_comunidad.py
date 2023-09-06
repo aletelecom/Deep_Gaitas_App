@@ -260,7 +260,9 @@ def show_estudio_comunidad():
     centralidad = st.selectbox('Selecciona el tipo de centralidad', centrality_selection)
     layout = st.selectbox('Selecciona la distribución de los nodos', layout_selection)
 
+    # Publica la imágen en la app
     img = plot_centrality_cached(G, centralidad, layout)
     st.image(img)
 
+    # Esto cambiará según la opción que elija el usuario.
     st.markdown(explicaciones_centralidades[centralidad])

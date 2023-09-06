@@ -206,10 +206,10 @@ def show_main_graph_page():
         
 
 
-    # Creamos la figura del grafo
+    # Creamos la figura del grafo.
     fig = graph_plot_plotly(G)
 
-    # Muestra el grafo en la página
+    # Muestra el grafo en la app.
     st.plotly_chart(
         fig,
         use_container_width=True

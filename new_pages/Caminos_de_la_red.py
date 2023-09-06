@@ -155,11 +155,14 @@ def show_caminos():
             * Elije a dos gaiteros distintos para ver como se interconectan dentro de la red.
     """)
     
+    # Creamos un listado de todos los nodos, luego creamos los indices para dejar a dos gaiteras como primera opción en cada
+    # objeto "select box".
     gaiteros = [nodo for nodo in G.nodes()]
     default_index_1 = gaiteros.index('Carmencita Silva')
     default_index_2 = gaiteros.index('Carmen Aizpúrua')
     gaitero_1 = st.selectbox('Selecciona el primer gaitero(a)', gaiteros, key=1, index=default_index_1)
     gaitero_2 = st.selectbox('Selecciona el segundo gaitero(a)', gaiteros, key=2, index=default_index_2)
 
+    # Publica la imágen en la app
     img = plot_path_cached(G, gaitero_1, gaitero_2)
     st.image(img)

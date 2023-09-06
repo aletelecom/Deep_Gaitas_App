@@ -166,20 +166,12 @@ def show_mundo_chiquito():
         st.markdown("""
             * Elije, o escribe el nombre de un(a) gaitero(a), o músico para ver su gráfico de mundo pequeño.
     """)
-        
-    # # Create the figure and axes outside the function
-    # fig, axes = plt.subplots(2, 2, figsize=(12, 12))
-    # fig.subplots_adjust(left=0, right=1, bottom=0, top=1, wspace=0, hspace=0)
+
+    # Creamos un listado de nodos para utilizarlos en el objeto "select box"    
     nodos = [nodo for nodo in G.nodes()]
     sorted(nodos)
     node = st.selectbox('Listado de gaiteros(as), y músicos:', nodos)
 
-
-    #     # Call the function for each level and subplot
-    # for level, ax in zip(range(1, 5), axes.flatten()):
-    #     plot_node_and_connections(G, node, level, ax)
-
-    # st.pyplot(fig)
-
+    # Publica la imágen en la app
     img = plot_node_and_connections_cached(G, node, 4)
     st.image(img)
