@@ -11,6 +11,6 @@ Streamlit es una plataforma que permite el desarrollo, y la publicación de apps
 
 ## Algunos ejemplos:
 
-[Mundo Pequeño de Ricardo Cepeda](/Assets/Mundo-Cepeda.png)
+![Mundo Pequeño de Ricardo Cepeda](/Assets/Mundo-Cepeda.png)
 
-[App en smartphone](/Assets/WhatsApp%20Video%202023-09-06%20at%2018.55.mp4)
+![App en smartphone](/Assets/App_demo.gif)
