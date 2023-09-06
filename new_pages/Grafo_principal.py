@@ -182,17 +182,25 @@ community_node_color = [community_colors[i] for i,c in enumerate(communities) fo
 
 def show_main_graph_page():
 
-    st.title('Grafo global la comunidad gaitera 	:spider_web:')
+    st.title('Grafo global la comunidad gaitera :spider_web:')
+
+    st.markdown(
+        """
+        Tomando como base el grafo principal, graficamos todos los nodos (gaiteros(as)) y sus conexiones.
+
+        Este gráfico es interactivo, y lo puedes manipular, debajo están las instrucciones.
+        """
+    )
 
     with st.expander(
         "Instrucciones", expanded=False
     ):
         st.write("")
         st.markdown("""
-            * Para expandir el grafo, utilizar el símbolo ubicado en la esquina derecha superior.
-            * Para volver al tamaño original, solo vuelve a presionarlo.
+            * Para expandir el grafo, utilizar el símbolo ubicado en la esquina derecha superior (no dispible en "smart phones").
+            * Para volver al tamaño original, solo vuelve a presionarlo (no dispible en "smart phones").
             * Para alejar y acercar utiliza los botones __+__, y __-__.
-            * Para moverte dentro del grafo utiliza el botón "cruz de flechas".
+            * Para moverte dentro del grafo utiliza el botón __"cruz de flechas"__.
             * Con el botón lupa te permite seleccionar un recuadro de los datos para hacer acercamientos dirigidos.
     """)
         

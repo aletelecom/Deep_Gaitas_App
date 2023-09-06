@@ -11,6 +11,7 @@ from new_pages.Grafo_principal import show_main_graph_page
 from new_pages.Estudios_de_comunidad import show_estudio_comunidad
 from new_pages.Mundo_chiquito import show_mundo_chiquito
 from new_pages.Datos_crudos import show_datos_crudos
+from new_pages.Caminos_de_la_red import show_caminos
 
 st.write("# Bienvenidos a Deep Gaitas! :musical_score:")
 
@@ -21,6 +22,7 @@ pages = [
     'Grafo Principal',
     'Estudio de comunidades',
     'Mundo chiquito',
+    'Caminos dentro de la red',
     'Datos crudos',
     ]
 page_to_show = st.selectbox('Seleccione la página a mostrar', pages)
@@ -62,6 +64,9 @@ elif page_to_show == 'Estudio de comunidades':
 
 elif page_to_show == 'Mundo chiquito':
     show_mundo_chiquito()
+
+elif page_to_show == 'Caminos dentro de la red':
+    show_caminos()
 
 elif page_to_show == 'Datos crudos':
     show_datos_crudos()

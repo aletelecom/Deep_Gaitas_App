@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from io import BytesIO
 
 import networkx as nx
 
@@ -103,6 +104,24 @@ def plot_node_and_connections(_G, node, n, _ax):
     _ax.legend(handles, [f"Nivel {i}" for i in range(n+1)], title="Radio de conexión")
 
 
+@st.cache_data
+def plot_node_and_connections_cached(_G, node, level):
+# Create the figure and axes outside the function
+    fig, axes = plt.subplots(2, 2, figsize=(12, 12))
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=1, wspace=0, hspace=0)
+    nodos = [nodo for nodo in _G.nodes()]
+    sorted(nodos)
+
+
+        # Call the function for each level and subplot
+    for level, ax in zip(range(1, 5), axes.flatten()):
+        plot_node_and_connections(G, node, level, ax)
+
+    img_bytes = BytesIO()
+    plt.savefig(img_bytes, format="png")
+    img_bytes.seek(0)
+    
+    return img_bytes
 
 ###########################################
 # Instanciación de objetos
@@ -148,16 +167,19 @@ def show_mundo_chiquito():
             * Elije, o escribe el nombre de un(a) gaitero(a), o músico para ver su gráfico de mundo pequeño.
     """)
         
-    # Create the figure and axes outside the function
-    fig, axes = plt.subplots(2, 2, figsize=(12, 12))
-    fig.subplots_adjust(left=0, right=1, bottom=0, top=1, wspace=0, hspace=0)
+    # # Create the figure and axes outside the function
+    # fig, axes = plt.subplots(2, 2, figsize=(12, 12))
+    # fig.subplots_adjust(left=0, right=1, bottom=0, top=1, wspace=0, hspace=0)
     nodos = [nodo for nodo in G.nodes()]
     sorted(nodos)
-    node = st.selectbox('Selecciona el tipo de centralidad', nodos)
+    node = st.selectbox('Listado de gaiteros(as), y músicos:', nodos)
 
 
-        # Call the function for each level and subplot
-    for level, ax in zip(range(1, 5), axes.flatten()):
-        plot_node_and_connections(G, node, level, ax)
+    #     # Call the function for each level and subplot
+    # for level, ax in zip(range(1, 5), axes.flatten()):
+    #     plot_node_and_connections(G, node, level, ax)
 
-    st.pyplot(fig)
+    # st.pyplot(fig)
+
+    img = plot_node_and_connections_cached(G, node, 4)
+    st.image(img)

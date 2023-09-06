@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from io import BytesIO
 
 import networkx as nx
 
@@ -110,7 +111,7 @@ def plot_graph_with_centrality(_G, centralidad, layout, alpha_global=0.7):
         pos = nx.kamada_kawai_layout(_G)
     
     # Create a Matplotlib figure
-    fig, ax = plt.subplots(figsize=(10, 8))
+    _, ax = plt.subplots(figsize=(10, 8))
 
     # Dibuja el gráfico
     nx.draw(
@@ -154,9 +155,16 @@ def plot_graph_with_centrality(_G, centralidad, layout, alpha_global=0.7):
 
     ax.set_title('Colaboraciones Gaiteras, resaltando la "Centralidad de {}"'.format(titulo), fontsize=15)
     
-    return fig
+    img_bytes = BytesIO()
+    plt.savefig(img_bytes, format="png")
+    img_bytes.seek(0)
     
+    return img_bytes
 
+
+@st.cache_data
+def plot_centrality_cached(_G, centralidad, layout):
+    return plot_graph_with_centrality(_G, centralidad, layout, alpha_global=0.7)
 
 ###########################################
 # Instanciación de objetos
@@ -252,7 +260,7 @@ def show_estudio_comunidad():
     centralidad = st.selectbox('Selecciona el tipo de centralidad', centrality_selection)
     layout = st.selectbox('Selecciona la distribución de los nodos', layout_selection)
 
-    fig = plot_graph_with_centrality(G, centralidad, layout)
-    st.pyplot(fig, use_container_width=True)
+    img = plot_centrality_cached(G, centralidad, layout)
+    st.image(img)
 
     st.markdown(explicaciones_centralidades[centralidad])
